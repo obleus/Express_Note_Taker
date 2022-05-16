@@ -4,7 +4,9 @@
 ### The purpose of this application is to be able to take and store notes. The application uses express backend then takes it and puts it in a JSON file.
 
 # User Story 
-### AS A small business owner </br> I WANT to be able to write and save notes </br> SO THAT I can organize my thoughts and keep track of tasks I need to complete
+### AS A small business owner 
+### I WANT to be able to write and save notes  
+### SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 # Acceptance Criteria
 ### GIVEN a note-taking application
