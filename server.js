@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const dbJson = require('./db/db.json')
 
 
 const PORT = process.env.PORT || 3001;
@@ -33,6 +34,28 @@ app.post('/api/notes', (req, res) => {
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.delete("/api/notes/:id", function (req, res) {
+
+    console.log("Req.params:", req.params);
+    let deletedNote = parseInt(req.params.id);
+    console.log(deletedNote);
+
+
+    for (let i = 0; i < dbJson.length; i++) {
+        if (deletedNote === dbJson[i].id) {
+           
+            dbJson.splice(i, 1);
+
+            let noteJson = JSON.stringify(dbJson, null, 2);
+           
+            writeFileAsync("./db/db.json", noteJson).then(function () {
+                console.log("Your note has been deleted!");
+            });
+        }
+    }
+    res.json(dbJson);
 });
 
 
